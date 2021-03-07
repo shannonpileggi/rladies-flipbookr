@@ -1,6 +1,8 @@
 # rladies-flipbookr
 
-Creating code demos in flipbookr w/ css inspired by RLadies
+Creating code demos in flipbookr with css inspired by RLadies.
+
+These demos take a while to run because of content`4. haven + gtsummary`.  This is left here for full reproducibility; removing this content will speed up rendering.
 
 
 * `rladies_default` shows flipbookr output using the default xaringan rladies theme
