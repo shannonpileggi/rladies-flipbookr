@@ -13,10 +13,10 @@ These demos take a while to run because of content `4. haven + gtsummary`.  This
 
 ### Default RLadies theme
 
-![](img/walrus-default.png)
+![Preview default](img/walrus-default.PNG)
 
 ### Adjusted RLadies theme
 
-![](img/walrus-adjusted.png)
+![Preview adjusted](img/walrus-adjusted.PNG)
 
 
