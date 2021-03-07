@@ -1,0 +1,372 @@
+---
+title: "Content for @WeAreRLadies Rotating Curator"
+subtitle: "With {xaringan} and {flipbookr}"
+author: "Shannon Pileggi w/ CSS by Silvia Canelón"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      ratio: 16:9
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{css, echo = FALSE}
+/* 
+# rem is a relevant font size unit, it stands for "relative to the 'root' em-dash", and it's 16px by default on (all?) HTML pages.
+
+# em is another relevant font size unit, it's relative to the em-dash, and it's relative to the container it's in.
+
+# resource: https://css-tricks.com/rems-ems/
+*/
+
+/*-- CODE TEXT  --------*/
+/*-- Code chunk --*/
+/*
+# 1rem or 1em = 16px, it seems !important is necessary here
+*/
+pre code {
+  font-size:          18px !important; 
+}
+
+
+/*-- Line highlighting within code chunk --*/
+.remark-code-line-highlighted {
+  background-color:   rgba(204, 189, 204, 0.6);
+}
+
+
+/*-- Inline code --*/
+/* 
+# 1rem = 16px, 1em = 20px, em here means it depends on the size of .remark-slide-content (below). For example, using 0.8em or 80% instead would make the text 80% as large as the .remark-slide-content text size (1.5em below) 
+*/
+
+.remark-code, .remark-inline-code {
+  font-family: 'Inconsolata', 'Lucida Console', Monaco, monospace; 
+  font-size:          1em;
+  color: #88398A;
+}
+
+
+/*-- PROSE TEXT --------*/
+body { font-family: 'Lato', 'Palatino Linotype', 'Book Antiqua', Palatino, 'Microsoft YaHei', 'Songti SC', serif;}
+
+/*
+# 1rem or 1em = 16px, controls size of prose text but not headings
+*/
+
+.remark-slide-content {
+  font-size:          1.5em; 
+}
+
+/*-- Headings --*/
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz'; 
+  font-weight: normal;
+  color: #562457;
+}
+
+/*-- Links/anchors --*/
+a, a > code {
+  color: #88398A;
+}
+
+```
+
+
+```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+library(tidyverse)
+#library(extrafont)
+library(flipbookr)
+library(xaringan)
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = " ", cache = F, dpi = 300)
+```
+
+
+---
+class: inverse, middle, center
+
+
+# 1. Walrus operator
+
+---
+
+`r chunk_reveal("walrus", title = "## Walrus operator")`
+
+```{r walrus, include = FALSE}
+library(tidyverse)
+library(rlang)
+library(glue)
+
+suffix <- "A" 
+
+dat <- tibble(x = 1:5) %>%
+  mutate(
+    "x_{suffix}" := x
+  ) 
+
+dat %>% 
+  dplyr::select(
+    glue::glue("x_{suffix}")
+    ) 
+```
+
+---
+class: inverse, middle, center
+
+# 2. mutate_at + vars + matches
+
+
+---
+
+`r chunk_reveal("mutate_1", title = "## mutate_at")`
+
+```{r mutate_1, include = FALSE}
+library(tidyverse)
+set.seed(215)
+
+# 1 to 7 rating; 99 = missing
+values <- c(1:7, 99)
+
+# example data frame 
+dat <- tibble(
+  "A_1" = sample(values, 10, TRUE),
+  "A_2" = sample(values, 10, TRUE)
+  )
+
+# re-code 99 to missing
+dat %>%
+  mutate_at(
+    vars(matches("A")),
+    na_if, 99
+    )
+```
+
+
+---
+
+`r chunk_reveal("mutate_2", title = "## mutate_at, cont.")`
+
+```{r mutate_2, include = FALSE}
+# create new variables with re-coded values
+dat %>%
+  mutate_at(
+    vars(matches("A")), 
+    list(clean = ~ na_if(., 99))
+    )
+```
+
+---
+
+`r chunk_reveal("mutate_3", title = "## mutate_at, cont.")`
+
+
+```{r mutate_3, include = FALSE}
+# multiple steps to track a 
+# data cleaning process
+# a top 2 box is a 6 or 7 
+# on a 1-7 rating scale
+dat %>%
+  mutate_at(
+    vars(matches("A")), 
+    list(clean = ~ na_if(., 99))
+    ) %>%
+  mutate_at(
+    vars(matches("clean")), 
+    list(
+      box = ~ case_when(
+        is.na(.)   ~ NA_character_,
+        . %in% 6:7 ~ "top 2",
+        . %in% 1:5 ~ "other")
+  ))
+```
+
+
+---
+class: inverse, middle, center
+
+# 3. mutate + across + matches
+
+<!-- get a flipbook version of the my_cars code chunk - pauses are where parentheses are balanced -->
+
+---
+
+`r chunk_reveal("mutate_across_1", title = "## mutate + across")`
+
+```{r mutate_across_1, include = FALSE}
+library(tidyverse)
+set.seed(215)
+
+# 1 to 7 rating; 99 = missing
+values <- c(1:7, 99)
+
+# example data frame 
+dat <- tibble(
+  "A_1" = sample(values, 10, TRUE),
+  "A_2" = sample(values, 10, TRUE)
+  )
+
+# re-code 99 to missing
+dat %>%
+  mutate(
+    across(matches("A"),
+      na_if, 99
+    ))
+```
+
+
+---
+
+`r chunk_reveal("mutate_across_2", title = "## mutate + across, cont.")`
+
+```{r mutate_across_2, include = FALSE}
+# create new variables with re-coded values
+dat %>%
+  mutate(
+    across(matches("A"), 
+    list(clean = ~ na_if(., 99))
+    ))
+```
+
+---
+
+`r chunk_reveal("mutate_across_3", title = "## mutate + across, cont.")`
+
+
+```{r mutate_across_3, include = FALSE}
+# multiple steps to track a 
+# data cleaning process
+# a top 2 box is a 6 or 7 
+# on a 1-7 rating scale
+dat %>%
+  mutate(
+    across(matches("A"), 
+    list(clean = ~ na_if(., 99))
+    )) %>%
+  mutate(
+    across(matches("clean"), 
+    list(
+      box = ~ case_when(
+        is.na(.)   ~ NA_character_,
+        . %in% 6:7 ~ "top 2",
+        . %in% 1:5 ~ "other")
+  )))
+```
+
+
+---
+class: inverse, middle, center
+
+# 4. haven + gtsummary
+
+<!-- get a flipbook version of the my_cars code chunk - pauses are where parentheses are balanced -->
+
+---
+
+`r chunk_reveal("haven_gt", title = "## {haven} + {gtsummary}")`
+
+```{r haven_gt, include = FALSE}
+library(tidyverse)
+library(here)
+library(haven)
+library(gtsummary)
+
+dat <- haven::read_sav(
+  here("data", "sadc_2017_national.sav")
+  )
+
+dat %>% 
+  count(q8) 
+```
+
+---
+
+`r chunk_reveal("haven_gt2", title = "## {haven} + {gtsummary}")`
+
+
+```{r haven_gt2, include = FALSE}
+dat %>% 
+  dplyr::select(q8) %>% 
+  mutate(q8 = haven::as_factor(q8)) %>% 
+  tbl_summary()
+```
+
+
+
+
+---
+class: inverse, middle, center
+
+# 5. `scales::show_col(_)`
+
+---
+
+`r chunk_reveal("show-col", title = "## scales::show_col")`
+
+
+```{r show-col, include = FALSE}
+rladies_colors <- c(
+  "#181818", 
+  "#D3D3D3", 
+  "#88398A", 
+  "#FFFFFF", 
+  "#562457"
+  )
+
+scales::show_col(rladies_colors)
+
+```
+
+
+---
+class: inverse, middle, center
+
+# 6. named color vectors
+
+---
+`r chunk_reveal("ggplot-col", title = "## Named color vectors +  scale_color_manual")`
+
+
+```{r ggplot-col, include = FALSE}
+# example data 
+dat <- tibble(x = 1:8) %>%
+  mutate(
+    bucket = case_when(
+      x %in% 1:2 ~ "A",
+      x %in% 3:4 ~ "B",
+      x %in% 5:6 ~ "C",
+      x %in% 7:8 ~ "D")
+    )
+
+dat
+```
+
+
+---
+
+`r chunk_reveal("ggplot-col-2", title = "## Named color vectors +  scale_color_manual")`
+
+
+```{r ggplot-col-2, include = FALSE}
+# named color vector
+rladies_colors <- c(
+  "A" = "#181818", 
+  "B" = "#562457",
+  "C" = "#88398A", 
+  "D" = "#D3D3D3"
+)
+
+dat %>% 
+  ggplot(
+    aes(x = x, 
+        y = x, 
+        color = bucket)
+    ) +
+  geom_point(size = 4) +
+  scale_color_manual(
+    values = rladies_colors
+    ) +
+  theme_void()
+```
+
