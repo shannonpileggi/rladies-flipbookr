@@ -1,6 +1,6 @@
 # rladies-flipbookr
 
-Creating code demos in flipbookr with CSS inspired by RLadies. CSS adjustments were kindly developed by Silvia Canelón.
+This content shows how to create code demonstrations in flipbookr with CSS inspired by R-Ladies, and goes with my blog post [R-Ladies styled code gifs with xaringan and flipbookr](https://www.pipinghotdata.com/posts/2021-03-08-r-ladies-styled-code-gifs-with-xaringan-and-flipbookr/). CSS adjustments were kindly developed by Silvia Canelón.
 
 These demos take a while to run because of content `4. haven + gtsummary`.  This is left here for full reproducibility; removing this content will speed up rendering.
 
