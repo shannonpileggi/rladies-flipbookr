@@ -656,14 +656,14 @@ dat %&gt;%
   # A tibble: 10 x 6
        A_1   A_2 A_1_clean A_2_clean A_1_clean_box A_2_clean_box
      &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;        
-   1    99     5        NA         5 &lt;NA&gt;          other        
+   1    99     5        NA         5 NA            other        
    2     7     1         7         1 top 2         other        
    3     7     4         7         4 top 2         other        
    4     5     7         5         7 other         top 2        
    5     1     4         1         4 other         other        
-   6    99    99        NA        NA &lt;NA&gt;          &lt;NA&gt;         
+   6    99    99        NA        NA NA            NA           
    7     6     6         6         6 top 2         top 2        
-   8    99     6        NA         6 &lt;NA&gt;          top 2        
+   8    99     6        NA         6 NA            top 2        
    9     4     7         4         7 other         top 2        
   10     4     1         4         1 other         other
 ```
@@ -1111,14 +1111,14 @@ dat %&gt;%
   # A tibble: 10 x 6
        A_1   A_2 A_1_clean A_2_clean A_1_clean_box A_2_clean_box
      &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;        
-   1    99     5        NA         5 &lt;NA&gt;          other        
+   1    99     5        NA         5 NA            other        
    2     7     1         7         1 top 2         other        
    3     7     4         7         4 top 2         other        
    4     5     7         5         7 other         top 2        
    5     1     4         1         4 other         other        
-   6    99    99        NA        NA &lt;NA&gt;          &lt;NA&gt;         
+   6    99    99        NA        NA NA            NA           
    7     6     6         6         6 top 2         top 2        
-   8    99     6        NA         6 &lt;NA&gt;          top 2        
+   8    99     6        NA         6 NA            top 2        
    9     4     7         4         7 other         top 2        
   10     4     1         4         1 other         other
 ```
@@ -1277,18 +1277,18 @@ dat &lt;- haven::read_sav(
 
 ```
   # A tibble: 203,663 x 314
-     sitecode sitename sitetype sitetypenum  year survyear weight stratum   PSU
-     &lt;chr+lb&gt; &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-   1 XX [Uni~ United ~ National           3  1991        1 0.264    12210     5
-   2 XX [Uni~ United ~ National           3  1991        1 0.506    12310    29
-   3 XX [Uni~ United ~ National           3  1991        1 0.320    11400    33
-   4 XX [Uni~ United ~ National           3  1991        1 0.779    11200    21
-   5 XX [Uni~ United ~ National           3  1991        1 1.39     12100     8
-   6 XX [Uni~ United ~ National           3  1991        1 0.0344   19007   147
-   7 XX [Uni~ United ~ National           3  1991        1 0.125    19006   143
-   8 XX [Uni~ United ~ National           3  1991        1 0.165    11410    20
-   9 XX [Uni~ United ~ National           3  1991        1 0.431    19005   130
-  10 XX [Uni~ United ~ National           3  1991        1 0.416    19003    59
+     sitecode   sitename  sitetype sitetypenum  year survyear weight stratum   PSU
+     &lt;chr+lbl&gt;  &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+   1 XX [Unite~ United S~ National           3  1991        1 0.264    12210     5
+   2 XX [Unite~ United S~ National           3  1991        1 0.506    12310    29
+   3 XX [Unite~ United S~ National           3  1991        1 0.320    11400    33
+   4 XX [Unite~ United S~ National           3  1991        1 0.779    11200    21
+   5 XX [Unite~ United S~ National           3  1991        1 1.39     12100     8
+   6 XX [Unite~ United S~ National           3  1991        1 0.0344   19007   147
+   7 XX [Unite~ United S~ National           3  1991        1 0.125    19006   143
+   8 XX [Unite~ United S~ National           3  1991        1 0.165    11410    20
+   9 XX [Unite~ United S~ National           3  1991        1 0.431    19005   130
+  10 XX [Unite~ United S~ National           3  1991        1 0.416    19003    59
   # ... with 203,653 more rows, and 305 more variables: record &lt;dbl&gt;,
   #   age &lt;dbl+lbl&gt;, sex &lt;dbl+lbl&gt;, grade &lt;dbl+lbl&gt;, race4 &lt;dbl+lbl&gt;,
   #   race7 &lt;dbl+lbl&gt;, stheight &lt;dbl&gt;, stweight &lt;dbl&gt;, bmi &lt;dbl&gt;, bmipct &lt;dbl&gt;,
@@ -1397,18 +1397,18 @@ count: false
 
 ```
   # A tibble: 203,663 x 314
-     sitecode sitename sitetype sitetypenum  year survyear weight stratum   PSU
-     &lt;chr+lb&gt; &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-   1 XX [Uni~ United ~ National           3  1991        1 0.264    12210     5
-   2 XX [Uni~ United ~ National           3  1991        1 0.506    12310    29
-   3 XX [Uni~ United ~ National           3  1991        1 0.320    11400    33
-   4 XX [Uni~ United ~ National           3  1991        1 0.779    11200    21
-   5 XX [Uni~ United ~ National           3  1991        1 1.39     12100     8
-   6 XX [Uni~ United ~ National           3  1991        1 0.0344   19007   147
-   7 XX [Uni~ United ~ National           3  1991        1 0.125    19006   143
-   8 XX [Uni~ United ~ National           3  1991        1 0.165    11410    20
-   9 XX [Uni~ United ~ National           3  1991        1 0.431    19005   130
-  10 XX [Uni~ United ~ National           3  1991        1 0.416    19003    59
+     sitecode   sitename  sitetype sitetypenum  year survyear weight stratum   PSU
+     &lt;chr+lbl&gt;  &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+   1 XX [Unite~ United S~ National           3  1991        1 0.264    12210     5
+   2 XX [Unite~ United S~ National           3  1991        1 0.506    12310    29
+   3 XX [Unite~ United S~ National           3  1991        1 0.320    11400    33
+   4 XX [Unite~ United S~ National           3  1991        1 0.779    11200    21
+   5 XX [Unite~ United S~ National           3  1991        1 1.39     12100     8
+   6 XX [Unite~ United S~ National           3  1991        1 0.0344   19007   147
+   7 XX [Unite~ United S~ National           3  1991        1 0.125    19006   143
+   8 XX [Unite~ United S~ National           3  1991        1 0.165    11410    20
+   9 XX [Unite~ United S~ National           3  1991        1 0.431    19005   130
+  10 XX [Unite~ United S~ National           3  1991        1 0.416    19003    59
   # ... with 203,653 more rows, and 305 more variables: record &lt;dbl&gt;,
   #   age &lt;dbl+lbl&gt;, sex &lt;dbl+lbl&gt;, grade &lt;dbl+lbl&gt;, race4 &lt;dbl+lbl&gt;,
   #   race7 &lt;dbl+lbl&gt;, stheight &lt;dbl&gt;, stweight &lt;dbl&gt;, bmi &lt;dbl&gt;, bmipct &lt;dbl&gt;,
@@ -1486,7 +1486,7 @@ dat %&gt;%
      q8              
      &lt;fct&gt;           
    1 Rarely          
-   2 &lt;NA&gt;            
+   2 NA              
    3 Most of the time
    4 Most of the time
    5 Never           

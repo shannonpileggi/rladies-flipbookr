@@ -72,6 +72,14 @@ a, a > code {
   color: #88398A;
 }
 
+/*-- Inverse/divider slides --*/
+.inverse {
+  background-color: #562457;
+}
+.inverse, .inverse h1, .inverse h2, .inverse h3, .inverse a, inverse a > code {
+  color: #fff;
+}
+
 ```
 
 
