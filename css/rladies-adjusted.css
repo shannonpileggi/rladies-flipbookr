@@ -1,7 +1,17 @@
 /* 
-Authors: 
+CSS originally developed by Alison Hill for the xaringan R-Ladies theme
+https://alison.rbind.io/project/rladies-xaringan/
+https://github.com/yihui/xaringan/tree/master/inst/rmarkdown/templates/xaringan/resources
+
+
+This CSS has been adapted by: 
 Silvia Canelón (https://silvia.rbind.io) 
 Shannon Pileggi (https://www.pipinghotdata.com) 
+
+The primary modifications are:
+1. increasing code font size (pre code)
+2. changing highlight shade color (.remark-code-line-highlighted)
+3. additional commenting
 */
 
 /* 
